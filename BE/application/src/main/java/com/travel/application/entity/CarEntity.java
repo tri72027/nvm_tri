@@ -24,9 +24,11 @@ public class CarEntity {
 	
 	@Column(name = "name", length = 45, nullable = false)
 	private String name;
+	@Column(name = "license_plates", length = 45, nullable = false)
+	private String licensePlates;
 	
 	@Column(name = "price", length = 10)
-	private long price;
+	private double price;
 	
 	@Column(name = "amount")
 	private int amount;
@@ -57,7 +59,7 @@ public class CarEntity {
 		this.name = name;
 	}
 
-	public long getPrice() {
+	public double getPrice() {
 		return price;
 	}
 

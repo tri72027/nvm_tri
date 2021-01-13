@@ -1,50 +1,24 @@
 package com.travel.application.travelservice.createprovince.dto;
 
-import javax.persistence.Column;
+import java.util.List;
 
 public class CreateProvinceRequest {
-
+	public List<ProvinceRequest> listProvince;
+	
 	public CreateProvinceRequest() {
 	
 	}
+
+	public CreateProvinceRequest(List<ProvinceRequest> listProvince) {
+		this.listProvince = listProvince;
+	}
+
+	public List<ProvinceRequest> getListProvince() {
+		return listProvince;
+	}
+
+	public void setListProvince(List<ProvinceRequest> listProvince) {
+		this.listProvince = listProvince;
+	}
 	
-
-	public CreateProvinceRequest(int provinceID, String code, String name) {
-
-		this.provinceID = provinceID;
-		this.code = code;
-		this.name = name;
-	}
-
-
-	private int provinceID;
-
-	private String code;
-
-	private String name;
-
-	public int getProvinceID() {
-		return provinceID;
-	}
-
-	public void setProvinceID(int provinceID) {
-		this.provinceID = provinceID;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 }

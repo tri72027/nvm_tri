@@ -67,6 +67,14 @@ public class TripEntity {
 		return this.getTripID() + ", " + this.getRoute().getRouteID() + ", " + this.getDate() + ", " + this.getCar();
 	}
 
+	public List<TicketEntity> getTickets() {
+		return tickets;
+	}
+
+	public void setTickets(List<TicketEntity> tickets) {
+		this.tickets = tickets;
+	}
+
 	@ManyToOne
 	@JoinColumn(name = "route_id")
 	private RouteEntity route;

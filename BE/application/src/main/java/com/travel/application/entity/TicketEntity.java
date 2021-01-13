@@ -24,6 +24,8 @@ public class TicketEntity {
 	@Column(name = "ticket_id", nullable = false)
 	private int ticketID;
 	
+	@Column(name = "user_id")
+	private int userID;
 
 	@Column(name = "ticket_code", length = 10, nullable = false)
 	private String ticketCode;

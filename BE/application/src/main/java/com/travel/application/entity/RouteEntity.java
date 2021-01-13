@@ -30,7 +30,7 @@ public class RouteEntity {
 	@Column(name = "province_end", nullable = false)
 	private int provinceEnd;
 	@Column(name = "price", length = 10, nullable = false)
-	private long price;
+	private double price;
 	@Column(name = "departure_time")
 	private String departureTime;
 	@Column(name = "journey_time")
@@ -62,7 +62,7 @@ public class RouteEntity {
 		this.provinceEnd = provinceEnd;
 	}
 
-	public long getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
