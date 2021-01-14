@@ -1,6 +1,6 @@
-package com.travel.application.travelservice.createprovince.dto;
+package com.travel.application.travelservice.getprovince.dto;
 
-public class ProvinceRequest {
+public class GetProvinceRequest {
 	private int provinceID;
 
 	private String code;
@@ -29,5 +29,5 @@ public class ProvinceRequest {
 
 	public void setName(String name) {
 		this.name = name;
-	}
+	}	
 }

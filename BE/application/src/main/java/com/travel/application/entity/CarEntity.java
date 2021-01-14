@@ -1,10 +1,14 @@
 package com.travel.application.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,15 +26,15 @@ public class CarEntity {
 	@Column(name = "code", length = 10, nullable = false)
 	private String code;
 	
-	@Column(name = "name", length = 45, nullable = false)
+	@Column(name = "name", nullable = false)
 	private String name;
 	@Column(name = "license_plates", length = 45, nullable = false)
 	private String licensePlates;
 	
-	@Column(name = "price", length = 10)
+	@Column(name = "price", length = 10, nullable = false)
 	private double price;
 	
-	@Column(name = "amount")
+	@Column(name = "amount", nullable = false)
 	private int amount;
 
 	
@@ -78,4 +82,23 @@ public class CarEntity {
     public String toString() {
         return this.getCarID() + ", " + this.getCode() + ", " + this.getName()+ ", " + this.getPrice()+ ", " + this.getAmount();
     }
+	
+	@OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
+	private List<TripEntity> trips;
+
+
+
+	public String getLicensePlates() {
+		return licensePlates;
+	}
+
+	public void setLicensePlates(String licensePlates) {
+		this.licensePlates = licensePlates;
+	}
+
+	
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
 }

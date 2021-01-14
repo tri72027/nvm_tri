@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.travel.application.entity.ProvinceEntity;
 import com.travel.application.travelservice.createprovince.dto.CreateProvinceRequest;
-import com.travel.application.travelservice.createprovince.dto.ProvinceRequest;
+import com.travel.application.travelservice.createprovince.dto.CreateProvinceRequest;
 
 @Service
 public class ProvinceImplement implements ProvinceService {
@@ -15,16 +15,10 @@ public class ProvinceImplement implements ProvinceService {
 	public IRepo repo;
 	
 	
-	@Override
-	public List<ProvinceEntity> get() {
-		List<ProvinceEntity> listProvince = repo.findAll();
-		// TODO Auto-generated method stub
-		return listProvince;
-	}
 
 
 	@Override
-	public void save(ProvinceRequest requestList) {
+	public void save(CreateProvinceRequest requestList) {
 		
 		
 			ProvinceEntity province = new ProvinceEntity();

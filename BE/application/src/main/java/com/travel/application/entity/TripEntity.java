@@ -27,8 +27,6 @@ public class TripEntity {
 	private int tripID;
 	@Column(name = "date", nullable = false)
 	private Date date;
-	@Column(name = "car", nullable = false)
-	private int car;
 
 	public int getTripID() {
 		return tripID;
@@ -44,14 +42,6 @@ public class TripEntity {
 
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	public int getCar() {
-		return car;
-	}
-
-	public void setCar(int car) {
-		this.car = car;
 	}
 
 	public RouteEntity getRoute() {
@@ -75,10 +65,35 @@ public class TripEntity {
 		this.tickets = tickets;
 	}
 
+	public CarEntity getCar() {
+		return car;
+	}
+
+	public void setCar(CarEntity car) {
+		this.car = car;
+	}
+
 	@ManyToOne
-	@JoinColumn(name = "route_id")
+	@JoinColumn(name = "route_id", nullable = false)
 	private RouteEntity route;
+	
 	@OneToMany(mappedBy = "trip", cascade = CascadeType.ALL)
 	private List<TicketEntity> tickets;
+	
+	@ManyToOne
+	@JoinColumn(name = "car_id", nullable = false)
+	private CarEntity car;
+	
+	@ManyToOne
+	@JoinColumn(name="status", nullable = false)
+	private StatusTripEntity status;
+
+	protected StatusTripEntity getStatus() {
+		return status;
+	}
+
+	protected void setStatus(StatusTripEntity status) {
+		this.status = status;
+	}
 
 }

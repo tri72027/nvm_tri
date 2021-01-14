@@ -1,24 +1,33 @@
 package com.travel.application.travelservice.createprovince.dto;
 
-import java.util.List;
-
 public class CreateProvinceRequest {
-	public List<ProvinceRequest> listProvince;
-	
-	public CreateProvinceRequest() {
-	
+	private int provinceID;
+
+	private String code;
+
+	private String name;
+
+	public int getProvinceID() {
+		return provinceID;
 	}
 
-	public CreateProvinceRequest(List<ProvinceRequest> listProvince) {
-		this.listProvince = listProvince;
+	public void setProvinceID(int provinceID) {
+		this.provinceID = provinceID;
 	}
 
-	public List<ProvinceRequest> getListProvince() {
-		return listProvince;
+	public String getCode() {
+		return code;
 	}
 
-	public void setListProvince(List<ProvinceRequest> listProvince) {
-		this.listProvince = listProvince;
+	public void setCode(String code) {
+		this.code = code;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

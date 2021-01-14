@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.travel.application.entity.ProvinceEntity;
 import com.travel.application.travelservice.createprovince.dto.CreateProvinceRequest;
-import com.travel.application.travelservice.createprovince.dto.ProvinceRequest;
 import com.travel.application.travelservice.createprovince.service.ProvinceService;
+import com.travel.application.travelservice.createprovince.dto.CreateProvinceRequest;
 
 @RestController
 @CrossOrigin()
@@ -23,15 +23,10 @@ public class CreateProvinceController {
 	@Autowired
 	public ProvinceService service;
 
-	/*
-	 * @GetMapping("/")
-	 * 
-	 * @ResponseBody public List<ProvinceEntity> get () { List<ProvinceEntity> list
-	 * = service.get(); return list; }
-	 */
+	
 	@PostMapping("/save")
 	@ResponseBody
-	public String create(@RequestBody ProvinceRequest CreateProvinceRequest) {
+	public String create(@RequestBody CreateProvinceRequest CreateProvinceRequest) {
 		service.save(CreateProvinceRequest);
 		return "succes";
 
@@ -42,7 +37,7 @@ public class CreateProvinceController {
 	public String create(@PathVariable("code") String code, @PathVariable("name") String name, Model model) {
 		model.addAttribute("code", code);
 		model.addAttribute("name", name);
-		ProvinceRequest ProvinceRequest = new ProvinceRequest();
+		CreateProvinceRequest ProvinceRequest = new CreateProvinceRequest();
 		ProvinceRequest.setCode(code);
 		ProvinceRequest.setName(name);
 		service.save(ProvinceRequest);
