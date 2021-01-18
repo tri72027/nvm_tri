@@ -1,6 +1,6 @@
-package com.travel.application.travelservice.getprovince.dto;
+package com.travel.application.travelservice.updateprovince.dto;
 
-public class GetProvinceRequest {
+public class UpdateProvinceRequest {
 	private int provinceID;
 
 	private String code;
@@ -13,6 +13,13 @@ public class GetProvinceRequest {
 
 	public void setProvinceID(int provinceID) {
 		this.provinceID = provinceID;
+	}
+
+	public UpdateProvinceRequest(int provinceID, String code, String name) {
+		super();
+		this.provinceID = provinceID;
+		this.code = code;
+		this.name = name;
 	}
 
 	public String getCode() {

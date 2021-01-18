@@ -27,10 +27,6 @@ public class RouteEntity {
 	@Column(name = "route_id", nullable = false)
 	private int routeID;
 
-//	@Column(name = "province_start", nullable = false)
-//	private int provinceStart;
-//	@Column(name = "province_end", nullable = false)
-//	private int provinceEnd;
 	@Column(name = "price", length = 10, nullable = false)
 	private double price;
 	@Column(name = "departure_time")

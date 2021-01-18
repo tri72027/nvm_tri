@@ -1,4 +1,4 @@
-package com.travel.application.travelservice.getprovince.controller;
+package com.travel.application.travelservice.getroute.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,36 +11,34 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.travel.application.common.base.BaseResponse;
-import com.travel.application.travelservice.getprovince.dto.GetProvinceRequest;
-import com.travel.application.travelservice.getprovince.service.GetProvinceService;
+import com.travel.application.entity.RouteEntity;
+import com.travel.application.travelservice.getroute.dto.GetRouteRequest;
+import com.travel.application.travelservice.getroute.service.GetRouteService;
 
 @RestController
 @CrossOrigin()
-@RequestMapping("/province")
-public class GetProvinceController {
+@RequestMapping("/route")
+public class GetRouteController {
 	@Autowired
-	public GetProvinceService service;
+	public GetRouteService repo;
 
-	/*
-	 * @GetMapping("/getall")
-	 * 
-	 * @ResponseBody public List<GetProvinceReponse> get() {
-	 * List<GetProvinceReponse> list = service.get(); return list; }
-	 */
 	@GetMapping("/getall")
 
 	@ResponseBody
-	public ResponseEntity<?> getAll() {
-		BaseResponse list = service.get();
+	public ResponseEntity <?>getAll() {
+		BaseResponse list = repo.getAll();
 		return new ResponseEntity<>(list, HttpStatus.OK);
+
 	}
 
-	@GetMapping("/getbyid")
-
+	@GetMapping("/provincestart")
 	@ResponseBody
-	public ResponseEntity<?> getId(@RequestBody GetProvinceRequest GetProvinceRequest) {
-		BaseResponse list = service.getid(GetProvinceRequest);
+	
+	
+	public ResponseEntity <?>getProvinceStart(@RequestBody GetRouteRequest req) {
+		BaseResponse list = repo.getProvinceStart(req);
 		return new ResponseEntity<>(list, HttpStatus.OK);
+
 	}
 
 }
