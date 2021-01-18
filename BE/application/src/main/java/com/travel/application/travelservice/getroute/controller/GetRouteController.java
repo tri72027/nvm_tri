@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.travel.application.common.base.BaseResponse;
-import com.travel.application.entity.RouteEntity;
 import com.travel.application.travelservice.getroute.dto.GetRouteRequest;
 import com.travel.application.travelservice.getroute.service.GetRouteService;
 
@@ -31,12 +30,21 @@ public class GetRouteController {
 
 	}
 
-	@GetMapping("/provincestart")
+	@GetMapping("/getbyprovincestart")
 	@ResponseBody
 	
 	
 	public ResponseEntity <?>getProvinceStart(@RequestBody GetRouteRequest req) {
 		BaseResponse list = repo.getProvinceStart(req);
+		return new ResponseEntity<>(list, HttpStatus.OK);
+
+	}
+	@GetMapping("/getbyid")
+	@ResponseBody
+	
+	
+	public ResponseEntity <?>getById(@RequestBody GetRouteRequest req) {
+		BaseResponse list = repo.getbyId(req);
 		return new ResponseEntity<>(list, HttpStatus.OK);
 
 	}
