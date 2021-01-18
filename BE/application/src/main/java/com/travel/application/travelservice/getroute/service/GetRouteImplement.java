@@ -43,8 +43,9 @@ public class GetRouteImplement implements GetRouteService {
 
 		BaseResponse cmRep = new BaseResponse();
 		Optional<ProvinceEntity> provinceStart = repoProvine.findById(req.getProvinceStart());
+		
 		RouteEntity list = repo.findRouteByProvinceStart(provinceStart.get().getProvinceID());
-
+		GetRouteResponse response = new GetRouteResponse();
 		cmRep.setContent(list);
 		
 		// TODO Auto-generated method stub
