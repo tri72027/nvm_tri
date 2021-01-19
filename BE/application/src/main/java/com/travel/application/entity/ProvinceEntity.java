@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "province")
 
@@ -45,10 +48,10 @@ public class ProvinceEntity {
 	public String toString() {
 		return this.getProvinceID() + ", " + this.getCode() + ", " + this.getName();
 	}
-
+	@JsonBackReference  
 	@OneToMany(mappedBy = "provinceStart", cascade = CascadeType.ALL)
 	private List<RouteEntity> routesStart;
-
+	@JsonBackReference
 	@OneToMany(mappedBy = "provinceEnd", cascade = CascadeType.ALL)
 	private List<RouteEntity> routesEnd;
 	

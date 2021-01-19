@@ -20,7 +20,7 @@ import com.travel.application.travelservice.getroute.dto.GetRouteResponse;
 public class GetRouteImplement implements GetRouteService {
 	@Autowired
 	public IRepoGetRoute repo;
-	
+
 	@Autowired
 	public IRepoGetProvince repoProvine;
 
@@ -41,15 +41,21 @@ public class GetRouteImplement implements GetRouteService {
 
 	@Override
 	public BaseResponse getProvinceStart(GetRouteRequest req) {
-
 		BaseResponse cmRep = new BaseResponse();
 		Optional<ProvinceEntity> provinceStart = repoProvine.findById(req.getProvinceStart());
-		
-		RouteEntity list = repo.findRouteByProvinceStart(provinceStart.get().getProvinceID());
+	// Use JPArepository	
+		RouteEntity list = repo.findRouteByProvinceStart(provinceStart.get());
+	// Use Query
+//	RouteEntity list = repo.findRouteByProvinceStart(provinceStart.get().getProvinceID());
+
 		GetRouteResponse response = new GetRouteResponse();
-		cmRep.setContent(list);
-		
-		// TODO Auto-generated method stub
+		response.setDepartureTime(list.getDepartureTime());
+		response.setJourneyTime(list.getJourneyTime());
+		response.setPrice(list.getPrice());
+		response.setProvinceStart(list.getProvinceStart().getProvinceID());
+		response.setProvinceEnd(list.getProvinceEnd().getProvinceID());
+		response.setRooteID(list.getRouteID());
+		cmRep.setContent(response);
 		return cmRep;
 
 	}
@@ -61,12 +67,11 @@ public class GetRouteImplement implements GetRouteService {
 		BaseResponse cmRes = new BaseResponse();
 		GetRouteResponse response = new GetRouteResponse();
 		Optional<RouteEntity> listRoute = repo.findById(req.getRooteID());
-		if(listRoute.isEmpty())
-		{
+		if (listRoute.isEmpty()) {
 			cmRes.setError("ko ton tai");
 			return cmRes;
 		}
-		
+
 		response.setRooteID(listRoute.get().getRouteID());
 		response.setDepartureTime(listRoute.get().getDepartureTime());
 		response.setJourneyTime(listRoute.get().getJourneyTime());

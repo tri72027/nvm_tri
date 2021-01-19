@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "route")
 
@@ -91,14 +94,17 @@ public class RouteEntity {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
+	@JsonManagedReference	  
 	@ManyToOne
 	@JoinColumn(name = "province_start")
 	private ProvinceEntity provinceStart;
 	
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "province_end")
 	private ProvinceEntity provinceEnd;
+	
+	
 	
 	@OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
 	private List<TripEntity> trips;
